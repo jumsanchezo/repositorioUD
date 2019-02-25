@@ -21,7 +21,7 @@ function Quica(){
 		if(this.sprite==2){
 			ctx.fillStyle = "#ff0000";
 			ctx.font = "20px sans-serif";
-			ctx.fillText("HEY!!!!", y+65, x + 25);
+			ctx.fillText("Veooo me rayó el carro!!!!", y+65, x + 25);
 		}
 		ctx.restore();
 	}
@@ -55,6 +55,11 @@ function Quica(){
 			this.puntos++;
 		}
 	}
+	
+	this.sumarPuntos = function(){
+		this.puntos++
+	}
+	
 	
 	this.colision = function(x,y){
 		var distancia=Math.sqrt( Math.pow( (x-this.x), 2)+Math.pow( (y-this.y),2));
