@@ -38,7 +38,7 @@ function Calaca(y, x) {
 	this.velocidad = 0;
 	
 	while(this.velocidad == 0)
-		this.velocidad=aleatorio(1, 4);
+		this.velocidad=aleatorio(1, 5);
 			
 	this.dibujar = function(ctx){
 		var img = this.img;
@@ -47,8 +47,10 @@ function Calaca(y, x) {
 	
 	this.actualizar = function(){
 		this.x += this.velocidad;
-		this.x = (640 + this.x)%640;
-		if(this.x==500){
+		this.x = (600 + this.x)%600;
+		
+		if(this.x>=595){
+			//alert("Y="+this.x);
 			this.y = posicion();
 			this.velocidad=aleatorio(1, 4);
 		}
