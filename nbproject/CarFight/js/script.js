@@ -1,6 +1,10 @@
 
 var jugando;
 
+var suelo ={x:0, y:0};
+var imgSuelo= new Image();
+imgSuelo.src = "imagenes/ROAD3.png";
+
 $(document).ready(inicio);
 $(document).keydown(capturaTeclado);
 
@@ -53,7 +57,17 @@ function run(){
 		 
 	if(jugando){  
 		contextoBuffer.clearRect(0,0,buffer.width,buffer.height);
-
+		
+		if(suelo.y > 580){
+			suelo.y=0;
+		}
+		else{
+			suelo.y += 20; 
+		}
+		contextoBuffer.drawImage(imgSuelo, suelo.x, suelo.y, 500, 600,0,0,500,600);
+		
+		quica.sumarPuntos();
+		
 		quica.dibujar(contextoBuffer);
 		for(i=0;i<calacas.length;i++){
 			calacas[i].dibujar(contextoBuffer);
@@ -79,10 +93,10 @@ function run(){
 		quica.vida = 0;
 		quica.dibujar(contextoBuffer);
 		contextoBuffer.font = "50px sans-serif";
-		contextoBuffer.fillText("PERDEDOR!", 300, 440);
+		contextoBuffer.fillText("PERDEDOR!", 100, 440);
 		contextoBuffer.fillStyle = "#ff0000";
 		contextoBuffer.font = "15px sans-serif";
-		contextoBuffer.fillText("try again", 550, 460);
+		contextoBuffer.fillText("try again", 400, 550);
 		contexto.clearRect(0,0,miCanvas.width,miCanvas.height);
 		contexto.drawImage(buffer, 0, 0);
 	}
